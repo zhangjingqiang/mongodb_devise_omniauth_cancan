@@ -38,3 +38,10 @@ gem 'jquery-rails'
 
 gem "mongoid", "~> 2.4"
 gem "bson_ext", "~> 1.5"
+
+gem 'devise','2.1.0'
+
+gem "omniauth", '1.1.0'
+gem "omniauth-facebook", '1.3.0'
+
+gem 'cancan','1.6.7'

@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<br />
+<% if current_user != nil %>
+user:<%= current_user.user_name %><br />
+user_id:<%= current_user.id %><br />
+user_role:<%= current_user.roles_mask %><br />
+<% else %>
+<%= "nil user" %>
+<% end %>
 
 <%= yield %>
 

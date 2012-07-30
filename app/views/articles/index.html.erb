@@ -1,0 +1,40 @@
+<div id="user_nav">
+  <% if user_signed_in? %>
+    Signed in as <strong><%= current_user.user_name %></strong>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or
+    <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+  <% end %>
+</div>
+
+<h1>Listing articles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= article.name %></td>
+    <td><%= article.content %></td>
+    <td><%= link_to 'Show', article %></td>
+    <% if can? :update, article %>
+    <td><%= link_to 'Edit', edit_article_path(article) %></td>
+    <% end %>
+    <% if can? :destroy, article %>
+    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Article', new_article_path %>
